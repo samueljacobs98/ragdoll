@@ -26,4 +26,17 @@ class BadRequestError extends RagdollError {
   }
 }
 
-export { RagdollError, BadRequestError, InternalServerError };
+/**
+ * OpenAIError
+ * @description
+ * This error is thrown when an OpenAI error occurs.
+ * @extends HughieError
+ */
+class OpenAIError extends RagdollError {
+  constructor(message: string) {
+    super("OpenAI Error", message);
+    Object.setPrototypeOf(this, OpenAIError.prototype);
+  }
+}
+
+export { RagdollError, BadRequestError, InternalServerError, OpenAIError };
