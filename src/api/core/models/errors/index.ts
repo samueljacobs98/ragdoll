@@ -30,7 +30,7 @@ class BadRequestError extends RagdollError {
  * OpenAIError
  * @description
  * This error is thrown when an OpenAI error occurs.
- * @extends HughieError
+ * @extends RagdollError
  */
 class OpenAIError extends RagdollError {
   constructor(message: string) {
@@ -43,7 +43,7 @@ class OpenAIError extends RagdollError {
  * FileParseError
  * @description
  * This error is thrown when an FileParse error occurs.
- * @extends HughieError
+ * @extends RagdollError
  */
 class FileParseError extends RagdollError {
   constructor(message: string) {
@@ -56,7 +56,7 @@ class FileParseError extends RagdollError {
  * EmbeddingSimilarityError
  * @description
  * This error is thrown when an FileParse error occurs.
- * @extends HughieError
+ * @extends RagdollError
  */
 class EmbeddingSimilarityError extends RagdollError {
   constructor(message: string) {
