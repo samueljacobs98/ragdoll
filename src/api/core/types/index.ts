@@ -1,4 +1,4 @@
-import { OpenAIMessage } from "./openai/open-ai-message-type";
-import { OpenAIParams } from "./openai/open-ai-param-type";
+import { OpenAIMessage, OpenAIParams } from "./openai";
+import { RagSource } from "./rag-source";
 
-export { OpenAIMessage, OpenAIParams };
+export { OpenAIMessage, OpenAIParams, RagSource };

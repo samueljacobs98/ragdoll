@@ -6,9 +6,9 @@ import { ragService as service } from "../services";
 const handleRequest = async (req: Request, res: Response) => {
   const requestData: RequestData = validator.validateRequest(req);
 
-  const result = await service.serve(requestData);
+  const response = await service.serve({ ...requestData });
 
-  // res.status(200).json(result);
+  res.status(200).json({ message: response });
 };
 
 export { handleRequest };

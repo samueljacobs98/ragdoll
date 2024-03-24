@@ -5,11 +5,13 @@ import { ragRequestDataSchema as schema } from "./schemas";
 import { RagRequestData as RequestData } from "../../core/types";
 
 const validateRequest = (req: Request): RequestData => {
-  return validate(
+  const validationResult = validate(
     req,
     schema,
     new BadRequestError("Invalid chat request data")
   );
+
+  return { ...validationResult };
 };
 
 export { validateRequest };

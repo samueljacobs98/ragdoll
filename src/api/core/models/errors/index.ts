@@ -39,4 +39,37 @@ class OpenAIError extends RagdollError {
   }
 }
 
-export { RagdollError, BadRequestError, InternalServerError, OpenAIError };
+/**
+ * FileParseError
+ * @description
+ * This error is thrown when an FileParse error occurs.
+ * @extends HughieError
+ */
+class FileParseError extends RagdollError {
+  constructor(message: string) {
+    super("FileParse Error", message);
+    Object.setPrototypeOf(this, FileParseError.prototype);
+  }
+}
+
+/**
+ * EmbeddingSimilarityError
+ * @description
+ * This error is thrown when an FileParse error occurs.
+ * @extends HughieError
+ */
+class EmbeddingSimilarityError extends RagdollError {
+  constructor(message: string) {
+    super("EmbeddingSimilarity Error", message);
+    Object.setPrototypeOf(this, EmbeddingSimilarityError.prototype);
+  }
+}
+
+export {
+  RagdollError,
+  BadRequestError,
+  InternalServerError,
+  OpenAIError,
+  FileParseError,
+  EmbeddingSimilarityError,
+};

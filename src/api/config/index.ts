@@ -1,16 +1,9 @@
-import * as dotenv from "dotenv";
+import * as app from "./app-config";
+import * as openai from "./openai-config";
 
-dotenv.config();
-
-const apiKey = process.env.OPENAI_API_KEY;
-if (!apiKey) {
-  throw new Error("OPENAI_API_KEY is not set");
-}
-
-const config = {
-  openai: {
-    apiKey,
-  },
-};
+const config = Object.freeze({
+  app,
+  openai,
+});
 
 export { config };

@@ -1,5 +1,5 @@
 import OpenAI from "openai";
-import { OpenAIError } from "../core/models/errors";
+import { EmbeddingSimilarityError, OpenAIError } from "../core/models/errors";
 import { OpenAIMessage, OpenAIParams } from "../core/types";
 import { config } from "../config";
 
@@ -11,7 +11,7 @@ const embeddingModel = "text-embedding-3-small";
 const generateResponse = async (
   system: string,
   prompt: string,
-  messages: OpenAIMessage[]
+  messages: OpenAIMessage[] = []
 ) => {
   const params: OpenAIParams = {
     model: completionsModel,
@@ -52,4 +52,29 @@ const generateEmbedding = async (prompt: string) => {
   return embedding.data[0].embedding;
 };
 
-export { generateResponse, generateEmbedding };
+const cosineSimilarity = (embedding1: number[], embedding2: number[]) => {
+  let dotProduct = 0;
+  let norm1 = 0;
+  let norm2 = 0;
+
+  for (let i = 0; i < embedding1.length; i++) {
+    dotProduct += embedding1[i] * embedding2[i];
+    norm1 += embedding1[i] ** 2;
+    norm2 += embedding2[i] ** 2;
+  }
+
+  norm1 = Math.sqrt(norm1);
+  norm2 = Math.sqrt(norm2);
+
+  return dotProduct / (norm1 * norm2);
+};
+
+const getSimilarity = (embedding1: number[], embedding2: number[]) => {
+  if (embedding1.length !== embedding2.length) {
+    throw new EmbeddingSimilarityError("Embeddings must have the same length");
+  }
+
+  return cosineSimilarity(embedding1, embedding2);
+};
+
+export { generateResponse, generateEmbedding, getSimilarity };
