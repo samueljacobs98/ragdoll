@@ -21,7 +21,7 @@ const action = (fn: (req: Request, res: Response) => Promise<void>) => {
       logger.error("action", error);
       res.render("components/error", {
         layout: false,
-        message: `[Error][Internal Server Error]: Something went wrong with Hughie...`,
+        message: `[Error][Internal Server Error]: Something went wrong...`,
       });
     }
   };
