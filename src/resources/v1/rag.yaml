@@ -1,0 +1,43 @@
+/v1/rag:
+  post:
+    summary: Use RAG to analyse user-provided data for context to the query provided.
+    description: Accepts multipart/form-data with files and JSON body. Validates and processes the request.
+    requestBody:
+      content:
+        multipart/form-data:
+          schema:
+            type: object
+            properties:
+              files:
+                type: array
+                items:
+                  type: string
+                  format: binary
+                description: Array of files. Supports specific file types and limited by maxFilesCount.
+              body:
+                type: object
+                properties:
+                  query:
+                    type: string
+                    description: Query string to be processed.
+                required:
+                  - query
+            required:
+              - files
+              - body
+    responses:
+      200:
+        description: Successfully processed the request.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                message:
+                  type: string
+                  example: "Your processed result string here."
+      400:
+        description: Validation error if the request data does not meet the expected schema.
+
+      500:
+        description: Internal server error.

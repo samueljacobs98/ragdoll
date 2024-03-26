@@ -21,8 +21,7 @@ class RagPromptBuilder {
   }
 
   build() {
-    this._information.forEach((i) => console.log(i.tokenCount));
-    const { information, tokenCount } = this._information.reduce(
+    const { information } = this._information.reduce(
       (acc, info) => {
         if (acc.tokenCount + info.tokenCount < config.app.promptTokenLimit) {
           return {

@@ -1,0 +1,12 @@
+/v1/ping:
+  get:
+    summary: Check API responsiveness
+    description: Sends a GET request to check the API's responsiveness.
+    responses:
+      200:
+        description: A successful response indicating the API is responsive.
+        content:
+          text/plain:
+            schema:
+              type: string
+              example: pong
