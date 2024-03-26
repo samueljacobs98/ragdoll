@@ -8,7 +8,7 @@ import { RagdollError } from "./RagdollError";
  */
 class InternalServerError extends RagdollError {
   constructor(message: string) {
-    super("Internal Server Error", message);
+    super("Internal Server Error", message, 500);
     Object.setPrototypeOf(this, InternalServerError.prototype);
   }
 }
@@ -21,7 +21,7 @@ class InternalServerError extends RagdollError {
  */
 class BadRequestError extends RagdollError {
   constructor(message: string) {
-    super("Bad Request Error", message);
+    super("Bad Request Error", message, 400);
     Object.setPrototypeOf(this, BadRequestError.prototype);
   }
 }
@@ -34,7 +34,7 @@ class BadRequestError extends RagdollError {
  */
 class OpenAIError extends RagdollError {
   constructor(message: string) {
-    super("OpenAI Error", message);
+    super("OpenAI Error", message, 400);
     Object.setPrototypeOf(this, OpenAIError.prototype);
   }
 }
@@ -47,7 +47,7 @@ class OpenAIError extends RagdollError {
  */
 class FileParseError extends RagdollError {
   constructor(message: string) {
-    super("FileParse Error", message);
+    super("FileParse Error", message, 500);
     Object.setPrototypeOf(this, FileParseError.prototype);
   }
 }
@@ -60,7 +60,7 @@ class FileParseError extends RagdollError {
  */
 class EmbeddingSimilarityError extends RagdollError {
   constructor(message: string) {
-    super("EmbeddingSimilarity Error", message);
+    super("EmbeddingSimilarity Error", message, 500);
     Object.setPrototypeOf(this, EmbeddingSimilarityError.prototype);
   }
 }
